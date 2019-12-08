@@ -1,5 +1,7 @@
 package id.ac.its.waldo.rpscardgame;
 
+import java.util.List;
+import java.util.ArrayList;
 import java.util.Stack;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -12,7 +14,11 @@ import java.awt.CardLayout;
 public class Game extends JFrame {
 
 	private JPanel contentPane;
-	private Stack<Card> Deck;
+	private Stack<Card> deck;
+	private ArrayList<Card> hand;
+//	private int rock = 0;
+//	private int paper = 0;
+//	private int scissors = 0;
 	private CardLayout cardLayout;
 
 	public static void main(String[] args) {
@@ -32,12 +38,12 @@ public class Game extends JFrame {
 		setTitle("RPS Card Game");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(-10, -3, 1382, 778);
-		Deck = new Stack<Card>();
+		deck = new Stack<Card>();
+		hand = new ArrayList<Card>();
 		cardLayout = new CardLayout();
 		contentPane = new JPanel();
 		contentPane.setLayout(cardLayout);
 		contentPane.add(new MainMenu(this), "Main Menu");
-		contentPane.add(new Deckbuilder(this), "Deckbuilder");
 		setContentPane(contentPane);
 	}
 	
@@ -53,11 +59,61 @@ public class Game extends JFrame {
 		
 	}
 	
-	public void showMatch() {
+	public void showMulligan() {
+		cardLayout.show(contentPane, "Mulligan");
+	}
+	
+	public void showWildcard() {
 		
 	}
 	
-	public void pushDeck(Card card) {
-		Deck.push(card);
+	public void showPlayCard() {
+		
+	}
+	
+	public void showShowdown() {
+		
+	}
+	
+//	public CardLayout getCardLayout() {
+//		return cardLayout;
+//	}
+	
+	public Stack<Card> getDeck(){
+		return deck;
+	}
+	
+	public ArrayList<Card> getHand(){
+		return hand;
+	}
+	
+//	public int getRock() {
+//		return rock;
+//	}
+//	
+//	public void setRock(int rock) {
+//		this.rock = rock;
+//	}
+//	
+//	public int getPaper() {
+//		return paper;
+//	}
+//	
+//	public void setPaper(int paper) {
+//		this.paper = paper;
+//	}
+//	
+//	public int getScissors() {
+//		return scissors;
+//	}
+//	
+//	public void setScissors(int scissors) {
+//		this.scissors = scissors;
+//	}
+	
+	public void drawCards(int n, ArrayList<Card> hand, Stack<Card> deck) {
+		for(int k=0;k<n;k++) {
+			hand.add(deck.pop());
+		}
 	}
 }
