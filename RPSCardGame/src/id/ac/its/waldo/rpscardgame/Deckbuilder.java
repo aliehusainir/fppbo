@@ -62,6 +62,7 @@ public class Deckbuilder extends JPanel {
 		JButton btnCancel = new JButton("Cancel");
 		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				removeThis(frame);
 				frame.showMainMenu();
 			}
 		});

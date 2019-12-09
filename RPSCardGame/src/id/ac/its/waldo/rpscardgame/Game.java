@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Stack;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -64,7 +63,7 @@ public class Game extends JFrame {
 	}
 	
 	public void showWildcard() {
-		
+		cardLayout.show(contentPane, "Wildcard");
 	}
 	
 	public void showPlayCard() {
@@ -75,10 +74,6 @@ public class Game extends JFrame {
 		
 	}
 	
-//	public CardLayout getCardLayout() {
-//		return cardLayout;
-//	}
-	
 	public Stack<Card> getDeck(){
 		return deck;
 	}
@@ -86,31 +81,7 @@ public class Game extends JFrame {
 	public ArrayList<Card> getHand(){
 		return hand;
 	}
-	
-//	public int getRock() {
-//		return rock;
-//	}
-//	
-//	public void setRock(int rock) {
-//		this.rock = rock;
-//	}
-//	
-//	public int getPaper() {
-//		return paper;
-//	}
-//	
-//	public void setPaper(int paper) {
-//		this.paper = paper;
-//	}
-//	
-//	public int getScissors() {
-//		return scissors;
-//	}
-//	
-//	public void setScissors(int scissors) {
-//		this.scissors = scissors;
-//	}
-	
+
 	public void drawCards(int n, ArrayList<Card> hand, Stack<Card> deck) {
 		for(int k=0;k<n;k++) {
 			hand.add(deck.pop());
