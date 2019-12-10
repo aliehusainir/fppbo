@@ -25,6 +25,13 @@ public class Mulligan extends JPanel {
 		ArrayList<Card> hand = frame.getHand();
 		frame.drawCards(5, hand, deck);
 		
+		Stack<Card> enemyDeck = frame.getEnemyDeck();
+		ArrayList<Card> enemyHand = frame.getEnemyHand();
+		for(int k=0;k<30;k++) {
+			enemyDeck.add(new Card());
+		}
+		frame.drawCards(5, enemyHand, enemyDeck);
+		
 		ArrayList<JButton> cardSlots = new ArrayList<JButton>();
 		for(int k=0;k<10;k++) {
 			cardSlots.add(new JButton());
@@ -36,7 +43,7 @@ public class Mulligan extends JPanel {
 				cardSlots.get(0).setEnabled(false);
 			}
 		});
-		cardSlots.get(0).setBounds(60, 420, 210, 280);
+		cardSlots.get(0).setBounds(60, 420, 180, 240);
 		add(cardSlots.get(0));
 		
 		cardSlots.get(1).addActionListener(new ActionListener() {
@@ -45,7 +52,7 @@ public class Mulligan extends JPanel {
 				cardSlots.get(1).setEnabled(false);
 			}
 		});
-		cardSlots.get(1).setBounds(320, 420, 210, 280);
+		cardSlots.get(1).setBounds(276, 420, 180, 240);
 		add(cardSlots.get(1));
 		
 		cardSlots.get(2).addActionListener(new ActionListener() {
@@ -54,7 +61,7 @@ public class Mulligan extends JPanel {
 				cardSlots.get(2).setEnabled(false);
 			}
 		});
-		cardSlots.get(2).setBounds(580, 420, 210, 280);
+		cardSlots.get(2).setBounds(492, 420, 180, 240);
 		add(cardSlots.get(2));
 		
 		cardSlots.get(3).addActionListener(new ActionListener() {
@@ -63,7 +70,7 @@ public class Mulligan extends JPanel {
 				cardSlots.get(3).setEnabled(false);
 			}
 		});
-		cardSlots.get(3).setBounds(840, 420, 210, 280);
+		cardSlots.get(3).setBounds(708, 420, 180, 240);
 		add(cardSlots.get(3));
 		
 		cardSlots.get(4).addActionListener(new ActionListener() {
@@ -72,7 +79,7 @@ public class Mulligan extends JPanel {
 				cardSlots.get(4).setEnabled(false);
 			}
 		});
-		cardSlots.get(4).setBounds(1100, 420, 210, 280);
+		cardSlots.get(4).setBounds(924, 420, 180, 240);
 		add(cardSlots.get(4));
 		
 		cardSlots.get(5).addActionListener(new ActionListener() {
@@ -82,7 +89,7 @@ public class Mulligan extends JPanel {
 			}
 		});
 		cardSlots.get(5).setEnabled(false);
-		cardSlots.get(5).setBounds(60, 60, 210, 280);
+		cardSlots.get(5).setBounds(60, 60, 180, 240);
 		add(cardSlots.get(5));
 		
 		cardSlots.get(6).addActionListener(new ActionListener() {
@@ -92,7 +99,7 @@ public class Mulligan extends JPanel {
 			}
 		});
 		cardSlots.get(6).setEnabled(false);
-		cardSlots.get(6).setBounds(320, 60, 210, 280);
+		cardSlots.get(6).setBounds(276, 60, 180, 240);
 		add(cardSlots.get(6));
 		
 		cardSlots.get(7).addActionListener(new ActionListener() {
@@ -102,7 +109,7 @@ public class Mulligan extends JPanel {
 			}
 		});
 		cardSlots.get(7).setEnabled(false);
-		cardSlots.get(7).setBounds(580, 60, 210, 280);
+		cardSlots.get(7).setBounds(492, 60, 180, 240);
 		add(cardSlots.get(7));
 		
 		cardSlots.get(8).addActionListener(new ActionListener() {
@@ -112,7 +119,7 @@ public class Mulligan extends JPanel {
 			}
 		});
 		cardSlots.get(8).setEnabled(false);
-		cardSlots.get(8).setBounds(840, 60, 210, 280);
+		cardSlots.get(8).setBounds(708, 60, 180, 240);
 		add(cardSlots.get(8));
 		
 		cardSlots.get(9).addActionListener(new ActionListener() {
@@ -122,7 +129,7 @@ public class Mulligan extends JPanel {
 			}
 		});
 		cardSlots.get(9).setEnabled(false);
-		cardSlots.get(9).setBounds(1100, 60, 210, 280);
+		cardSlots.get(9).setBounds(924, 60, 180, 240);
 		add(cardSlots.get(9));
 		
 //		for(int k=0;k<5;k++) {
@@ -133,29 +140,27 @@ public class Mulligan extends JPanel {
 		
 		JLabel lbl = new JLabel("Mulligan Phase");
 		lbl.setHorizontalAlignment(SwingConstants.CENTER);
-		lbl.setBounds(580, 360, 210, 40);
+		lbl.setBounds(600, 340, 180, 40);
 		add(lbl);
 		
-		JButton confirm = new JButton("Confirm Mulligan");
+		JButton confirm = new JButton("Confirm");
 		confirm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int returned = 0;
 				for(int k=0;k<5;k++) {
 					if(cardSlots.get(k+5).isEnabled()) {
 						deck.push(hand.remove(k));
-						returned++;
+						Collections.shuffle(deck);
+						hand.add(k, deck.pop());
 					}
-					cardSlots.get(k+5).setEnabled(false);
-					cardSlots.get(k).setEnabled(false);
+//					cardSlots.get(k+5).setEnabled(false);
+//					cardSlots.get(k).setEnabled(false);
 				}
-				Collections.shuffle(deck);
-				frame.drawCards(returned, hand, deck);
 				frame.getContentPane().add(new Wildcard(frame), "Wildcard");
 				frame.showWildcard();
 				removeThis(frame);
 			}
 		});
-		confirm.setBounds(1100, 360, 210, 40);
+		confirm.setBounds(1140, 340, 180, 40);
 		add(confirm);
 		
 	}
