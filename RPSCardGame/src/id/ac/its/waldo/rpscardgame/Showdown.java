@@ -40,30 +40,62 @@ public class Showdown extends JPanel {
 		nextRound.setBounds(1140, 340, 180, 40);
 		add(nextRound);
 		
+		JButton toMainMenu = new JButton("Main Menu");
+		toMainMenu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.resetHand();
+				frame.resetScore();
+				frame.showMainMenu();
+				removeThis(frame);
+			}
+		});
+		toMainMenu.setVisible(false);
+		toMainMenu.setBounds(1140, 340, 180, 40);
+		add(toMainMenu);
+		
+		JButton quit = new JButton("Quit");
+		quit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+		quit.setVisible(false);
+		quit.setBounds(1140, 420, 180, 40);
+		add(quit);
+		
 		JLabel lbl = new JLabel();
 		lbl.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl.setBounds(1140, 140, 180, 40);
 		lbl.setVisible(false);
 		add(lbl);
+		
 		JLabel lbl2 = new JLabel();
 		lbl2.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl2.setBounds(1140, 180, 180, 40);
 		lbl2.setVisible(false);
 		add(lbl2);
 		
+		JLabel lbl3 = new JLabel("You won the game!");
+		lbl3.setHorizontalAlignment(SwingConstants.CENTER);
+		lbl2.setBounds(1140, 220, 180, 40);
+		lbl3.setVisible(false);
+		add(lbl3);
+		
+		JLabel lbl4 = new JLabel("You lost the game.");
+		lbl4.setHorizontalAlignment(SwingConstants.CENTER);
+		lbl4.setBounds(1140, 220, 180, 40);
+		lbl4.setVisible(false);
+		add(lbl4);
+		
 		JButton flip = new JButton("Flip!");
 		flip.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//ganti icon, tapi belum ada
-				//tie
+				
 				if(yourCard == enemyCard) {
-					//do nothing
 				}
-				//win condition
 				else if((yourCard == 0) && (enemyCard == 2) || (yourCard > 0) && (enemyCard == yourCard-1)) {
 					frame.updateWin();
 				}
-				//lose
 				else {
 					frame.updateLose();
 				}
@@ -73,14 +105,14 @@ public class Showdown extends JPanel {
 				lbl2.setVisible(true);
 				flip.setVisible(false);
 				if(frame.getYourScore() == 10) {
-//					lbl3.setVisible(true);
-//					toMainMenu.setVisible(true);
-//					quit.setVisible(true);
+					lbl3.setVisible(true);
+					toMainMenu.setVisible(true);
+					quit.setVisible(true);
 				}
 				else if(frame.getEnemyScore() == 10) {
-//					lbl4.setVisible(true);
-//					toMainMenu.setVisible(true);
-//					quit.setVisible(true);
+					lbl4.setVisible(true);
+					toMainMenu.setVisible(true);
+					quit.setVisible(true);
 				}
 				else{
 					nextRound.setVisible(true);

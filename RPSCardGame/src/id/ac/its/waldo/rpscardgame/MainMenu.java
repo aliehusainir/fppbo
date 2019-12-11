@@ -26,7 +26,7 @@ public class MainMenu extends JPanel {
 		JButton btnPlay = new JButton("Play");
 		btnPlay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(frame.getDeck().isEmpty()) JOptionPane.showMessageDialog(null, "Build a deck first.");
+				if(frame.getDeck().size() != 30) JOptionPane.showMessageDialog(null, "Build a deck first.");
 				else {
 					frame.getContentPane().add(new Mulligan(frame), "Mulligan");
 					frame.showMulligan();

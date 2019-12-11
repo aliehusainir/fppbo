@@ -110,6 +110,16 @@ public class Game extends JFrame {
 		return enemyScore;
 	}
 	
+	public void resetHand() {
+		hand.clear();
+		enemyHand.clear();
+	}
+	
+	public void resetScore() {
+		yourScore = 0;
+		enemyScore = 0;
+	}
+	
 	public void drawCards(int n, ArrayList<Card> hand, Stack<Card> deck) {
 		for(int k=0;k<n;k++) {
 			hand.add(deck.pop());

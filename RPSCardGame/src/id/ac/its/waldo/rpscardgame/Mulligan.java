@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;

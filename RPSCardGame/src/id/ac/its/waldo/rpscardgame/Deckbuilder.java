@@ -1,5 +1,6 @@
 package id.ac.its.waldo.rpscardgame;
 
+import java.awt.Image;
 import javax.swing.JTextField;
 import java.lang.Integer;
 import javax.swing.JOptionPane;
@@ -9,6 +10,7 @@ import javax.swing.text.NumberFormatter;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JFormattedTextField;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -23,16 +25,22 @@ public class Deckbuilder extends JPanel {
 	public Deckbuilder(Game frame) {
 		setLayout(null);
 		
-		JLabel label_1 = new JLabel("New label");
-		label_1.setBounds(60, 11, 270, 360);
+		JLabel label_1 = new JLabel();
+		ImageIcon rockIcon = new ImageIcon("src/resources/rock.png");
+		label_1.setIcon(rockIcon);
+		label_1.setBounds(60, 56, 180, 240);
 		add(label_1);
 		
-		JLabel label = new JLabel("New label");
-		label.setBounds(480, 11, 270, 360);
+		JLabel label = new JLabel();
+		ImageIcon paperIcon = new ImageIcon("src/resources/paper.png");
+		label.setIcon(paperIcon);
+		label.setBounds(480, 56, 180, 240);
 		add(label);
 		
-		JLabel label_2 = new JLabel("New label");
-		label_2.setBounds(900, 11, 270, 360);
+		JLabel label_2 = new JLabel();
+		ImageIcon scissorsIcon = new ImageIcon("src/resources/scissors.png");
+		label_2.setIcon(scissorsIcon);
+		label_2.setBounds(900, 56, 180, 240);
 		add(label_2);
 		
 		NumberFormat format = NumberFormat.getIntegerInstance();
@@ -44,19 +52,19 @@ public class Deckbuilder extends JPanel {
 		JFormattedTextField formattedTextField = new JFormattedTextField(formatter);
 		formattedTextField.setValue(0);
 		formattedTextField.setHorizontalAlignment(SwingConstants.CENTER);
-		formattedTextField.setBounds(380, 166, 50, 50);
+		formattedTextField.setBounds(280, 150, 50, 50);
 		add(formattedTextField);
 		
 		JFormattedTextField formattedTextField_1 = new JFormattedTextField(formatter);
 		formattedTextField_1.setValue(0);
 		formattedTextField_1.setHorizontalAlignment(SwingConstants.CENTER);
-		formattedTextField_1.setBounds(800, 166, 50, 50);
+		formattedTextField_1.setBounds(700, 150, 50, 50);
 		add(formattedTextField_1);
 		
 		JFormattedTextField formattedTextField_2 = new JFormattedTextField(formatter);
 		formattedTextField_2.setValue(0);
 		formattedTextField_2.setHorizontalAlignment(SwingConstants.CENTER);
-		formattedTextField_2.setBounds(1230, 166, 50, 50);
+		formattedTextField_2.setBounds(1130, 150, 50, 50);
 		add(formattedTextField_2);
 		
 		JButton btnCancel = new JButton("Cancel");
