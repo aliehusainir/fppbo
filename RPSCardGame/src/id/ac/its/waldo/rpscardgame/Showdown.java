@@ -1,5 +1,6 @@
 package id.ac.its.waldo.rpscardgame;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -18,14 +19,16 @@ public class Showdown extends JPanel {
 	public Showdown(Game frame, int yourCard, int enemyCard) {
 		setLayout(null);
 		
-		JButton card = new JButton("");
-		card.setEnabled(false);
-		card.setBounds(600, 60, 180, 240);
+		ImageIcon rockIcon = new ImageIcon("src/resources/rock.png");
+		ImageIcon paperIcon = new ImageIcon("src/resources/paper.png");
+		ImageIcon scissorsIcon = new ImageIcon("src/resources/scissors.png");
+		
+		JButton card = new JButton();
+		card.setBounds(600, 420, 180, 240);
 		add(card);
 		
-		JButton card_1 = new JButton("");
-		card_1.setEnabled(false);
-		card_1.setBounds(600, 420, 180, 240);
+		JButton card_1 = new JButton();
+		card_1.setBounds(600, 60, 180, 240);
 		add(card_1);
 		
 		JButton nextRound = new JButton("Next Round");
@@ -90,7 +93,12 @@ public class Showdown extends JPanel {
 		JButton flip = new JButton("Flip!");
 		flip.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				if(yourCard==0)card.setIcon(rockIcon);
+				else if(yourCard==1)card.setIcon(paperIcon);
+				else if(yourCard==2)card.setIcon(scissorsIcon);
+				if(enemyCard==0)card_1.setIcon(rockIcon);
+				else if(enemyCard==1)card_1.setIcon(paperIcon);
+				else if(enemyCard==2)card_1.setIcon(scissorsIcon);
 				if(yourCard == enemyCard) {
 				}
 				else if((yourCard == 0) && (enemyCard == 2) || (yourCard > 0) && (enemyCard == yourCard-1)) {

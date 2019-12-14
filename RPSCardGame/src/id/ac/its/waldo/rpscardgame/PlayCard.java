@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.Random;
 import java.util.Stack;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -29,16 +30,7 @@ public class PlayCard extends JPanel {
 		
 		ArrayList<Card> hand = frame.getHand();
 		ArrayList<Card> enemyHand = frame.getEnemyHand();
-		if(hand.isEmpty() && enemyHand.isEmpty()) {
-			
-		}
-		else if(hand.isEmpty()) {
-			
-		}
-		else if(enemyHand.isEmpty()) {
-			
-		}
-		else {
+		if (!enemyHand.isEmpty()) {
 			enemyPlayedCard = new Random().nextInt(enemyHand.size());
 		}
 		
@@ -51,9 +43,25 @@ public class PlayCard extends JPanel {
 			cardSlots.get(k).setEnabled(true);
 		}
 		
+		ImageIcon rockIcon = new ImageIcon("src/resources/rock.png");
+		ImageIcon paperIcon = new ImageIcon("src/resources/paper.png");
+		ImageIcon scissorsIcon = new ImageIcon("src/resources/scissors.png");
+		for(int k=0;k<hand.size();k++) {
+			if(hand.get(k).getType()==0) {
+				cardSlots.get(k).setIcon(rockIcon);
+			}
+			else if(hand.get(k).getType()==1) {
+				cardSlots.get(k).setIcon(paperIcon);
+			}
+			else if(hand.get(k).getType()==2) {
+				cardSlots.get(k).setIcon(scissorsIcon);
+			}
+		}
+		
 		cardSlots.get(0).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(cardSlots.get(6).isEnabled()==false) {
+					cardSlots.get(6).setIcon(cardSlots.get(0).getIcon());
 					cardSlots.get(6).setEnabled(true);
 					returnCard = cardSlots.get(0);
 					playedCard = 0;
@@ -67,6 +75,7 @@ public class PlayCard extends JPanel {
 		cardSlots.get(1).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(cardSlots.get(6).isEnabled()==false) {
+					cardSlots.get(6).setIcon(cardSlots.get(1).getIcon());
 					cardSlots.get(6).setEnabled(true);
 					returnCard = cardSlots.get(1);
 					playedCard = 1;
@@ -80,6 +89,7 @@ public class PlayCard extends JPanel {
 		cardSlots.get(2).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(cardSlots.get(6).isEnabled()==false) {
+					cardSlots.get(6).setIcon(cardSlots.get(2).getIcon());
 					cardSlots.get(6).setEnabled(true);
 					returnCard = cardSlots.get(2);
 					playedCard = 2;
@@ -93,6 +103,7 @@ public class PlayCard extends JPanel {
 		cardSlots.get(3).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(cardSlots.get(6).isEnabled()==false) {
+					cardSlots.get(6).setIcon(cardSlots.get(3).getIcon());
 					cardSlots.get(6).setEnabled(true);
 					returnCard = cardSlots.get(3);
 					playedCard = 3;
@@ -106,6 +117,7 @@ public class PlayCard extends JPanel {
 		cardSlots.get(4).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(cardSlots.get(6).isEnabled()==false) {
+					cardSlots.get(6).setIcon(cardSlots.get(4).getIcon());
 					cardSlots.get(6).setEnabled(true);
 					returnCard = cardSlots.get(4);
 					playedCard = 4;
@@ -119,6 +131,7 @@ public class PlayCard extends JPanel {
 		cardSlots.get(5).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(cardSlots.get(6).isEnabled()==false) {
+					cardSlots.get(6).setIcon(cardSlots.get(5).getIcon());
 					cardSlots.get(6).setEnabled(true);
 					returnCard = cardSlots.get(5);
 					playedCard = 5;
@@ -131,6 +144,7 @@ public class PlayCard extends JPanel {
 		
 		cardSlots.get(6).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				cardSlots.get(6).setIcon(null);
 				returnCard.setEnabled(true);
 				playedCard = -1;
 				cardSlots.get(6).setEnabled(false);

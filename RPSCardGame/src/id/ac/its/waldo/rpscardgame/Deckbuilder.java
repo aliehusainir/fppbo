@@ -6,6 +6,8 @@ import java.lang.Integer;
 import javax.swing.JOptionPane;
 import java.lang.Integer;
 import java.text.NumberFormat;
+import java.util.Collections;
+
 import javax.swing.text.NumberFormatter;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
@@ -70,8 +72,8 @@ public class Deckbuilder extends JPanel {
 		JButton btnCancel = new JButton("Cancel");
 		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				removeThis(frame);
 				frame.showMainMenu();
+				removeThis(frame);
 			}
 		});
 		btnCancel.setBounds(558, 600, 250, 67);
@@ -86,18 +88,19 @@ public class Deckbuilder extends JPanel {
 				s=Integer.parseInt(formattedTextField_2.getText());
 				if(r+p+s!=30) JOptionPane.showMessageDialog(null,"Deck should contain exactly 30 cards.");
 				else {
-					Card card = new Card(0);
 					for(int k=0;k<r;k++) {
+						Card card = new Card(0);
 						frame.getDeck().push(card);
 					}
-					card.setType(1);
 					for(int k=0;k<p;k++) {
+						Card card = new Card(1);
 						frame.getDeck().push(card);
 					}
-					card.setType(2);
 					for(int k=0;k<s;k++) {
+						Card card = new Card(2);
 						frame.getDeck().push(card);
 					}
+					Collections.shuffle(frame.getDeck());
 					frame.showMainMenu();
 					removeThis(frame);
 				}

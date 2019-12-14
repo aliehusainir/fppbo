@@ -59,7 +59,7 @@ public class Game extends JFrame {
 	}
 	
 	public void showRules() {
-		
+		cardLayout.show(contentPane, "Rules");
 	}
 	
 	public void showMulligan() {

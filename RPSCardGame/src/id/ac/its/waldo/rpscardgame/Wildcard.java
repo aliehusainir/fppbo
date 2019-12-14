@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Stack;
 import javax.swing.JOptionPane;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -45,15 +46,32 @@ public class Wildcard extends JPanel {
 			cardSlots.get(k).setEnabled(true);
 		}
 		
+		ImageIcon rockIcon = new ImageIcon("src/resources/rock.png");
+		ImageIcon paperIcon = new ImageIcon("src/resources/paper.png");
+		ImageIcon scissorsIcon = new ImageIcon("src/resources/scissors.png");
+		for(int k=0;k<hand.size();k++) {
+			if(hand.get(k).getType()==0) {
+				cardSlots.get(k).setIcon(rockIcon);
+			}
+			else if(hand.get(k).getType()==1) {
+				cardSlots.get(k).setIcon(paperIcon);
+			}
+			else if(hand.get(k).getType()==2) {
+				cardSlots.get(k).setIcon(scissorsIcon);
+			}
+		}
+		
 		cardSlots.get(0).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(cardSlots.get(6).isEnabled()==false) {
+					cardSlots.get(6).setIcon(cardSlots.get(0).getIcon());
 					cardSlots.get(6).setEnabled(true);
 					returnCard1 = cardSlots.get(0);
 					discardedIndex1 = 0;
 					cardSlots.get(0).setEnabled(false);
 				}
 				else if(cardSlots.get(7).isEnabled()==false) {
+					cardSlots.get(7).setIcon(cardSlots.get(0).getIcon());
 					cardSlots.get(7).setEnabled(true);
 					returnCard2 = cardSlots.get(0);
 					discardedIndex2 = 0;
@@ -67,12 +85,14 @@ public class Wildcard extends JPanel {
 		cardSlots.get(1).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(cardSlots.get(6).isEnabled()==false) {
+					cardSlots.get(6).setIcon(cardSlots.get(1).getIcon());
 					cardSlots.get(6).setEnabled(true);
 					returnCard1 = cardSlots.get(1);
 					discardedIndex1 = 1;
 					cardSlots.get(1).setEnabled(false);
 				}
 				else if(cardSlots.get(7).isEnabled()==false) {
+					cardSlots.get(7).setIcon(cardSlots.get(1).getIcon());
 					cardSlots.get(7).setEnabled(true);
 					returnCard2 = cardSlots.get(1);
 					discardedIndex2 = 1;
@@ -86,12 +106,14 @@ public class Wildcard extends JPanel {
 		cardSlots.get(2).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(cardSlots.get(6).isEnabled()==false) {
+					cardSlots.get(6).setIcon(cardSlots.get(2).getIcon());
 					cardSlots.get(6).setEnabled(true);
 					returnCard1 = cardSlots.get(2);
 					discardedIndex1 = 2;
 					cardSlots.get(2).setEnabled(false);
 				}
 				else if(cardSlots.get(7).isEnabled()==false) {
+					cardSlots.get(7).setIcon(cardSlots.get(2).getIcon());
 					cardSlots.get(7).setEnabled(true);
 					returnCard2 = cardSlots.get(2);
 					discardedIndex2 = 2;
@@ -105,12 +127,14 @@ public class Wildcard extends JPanel {
 		cardSlots.get(3).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(cardSlots.get(6).isEnabled()==false) {
+					cardSlots.get(6).setIcon(cardSlots.get(3).getIcon());
 					cardSlots.get(6).setEnabled(true);
 					returnCard1 = cardSlots.get(3);
 					discardedIndex1 = 3;
 					cardSlots.get(3).setEnabled(false);
 				}
 				else if(cardSlots.get(7).isEnabled()==false) {
+					cardSlots.get(7).setIcon(cardSlots.get(3).getIcon());
 					cardSlots.get(7).setEnabled(true);
 					returnCard2 = cardSlots.get(3);
 					discardedIndex2 = 3;
@@ -124,12 +148,14 @@ public class Wildcard extends JPanel {
 		cardSlots.get(4).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(cardSlots.get(6).isEnabled()==false) {
+					cardSlots.get(6).setIcon(cardSlots.get(4).getIcon());
 					cardSlots.get(6).setEnabled(true);
 					returnCard1 = cardSlots.get(4);
 					discardedIndex1 = 4;
 					cardSlots.get(4).setEnabled(false);
 				}
 				else if(cardSlots.get(7).isEnabled()==false) {
+					cardSlots.get(7).setIcon(cardSlots.get(4).getIcon());
 					cardSlots.get(7).setEnabled(true);
 					returnCard2 = cardSlots.get(4);
 					discardedIndex2 = 4;
@@ -143,12 +169,14 @@ public class Wildcard extends JPanel {
 		cardSlots.get(5).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(cardSlots.get(6).isEnabled()==false) {
+					cardSlots.get(6).setIcon(cardSlots.get(5).getIcon());
 					cardSlots.get(6).setEnabled(true);
 					returnCard1 = cardSlots.get(5);
 					discardedIndex1 = 5;
 					cardSlots.get(5).setEnabled(false);
 				}
 				else if(cardSlots.get(7).isEnabled()==false) {
+					cardSlots.get(7).setIcon(cardSlots.get(5).getIcon());
 					cardSlots.get(7).setEnabled(true);
 					returnCard2 = cardSlots.get(5);
 					discardedIndex2 = 5;
@@ -161,6 +189,7 @@ public class Wildcard extends JPanel {
 		
 		cardSlots.get(6).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				cardSlots.get(6).setIcon(null);
 				returnCard1.setEnabled(true);
 				discardedIndex1 = -1;
 				cardSlots.get(6).setEnabled(false);
@@ -171,6 +200,7 @@ public class Wildcard extends JPanel {
 		
 		cardSlots.get(7).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				cardSlots.get(7).setIcon(null);
 				returnCard2.setEnabled(true);
 				discardedIndex2 = -1;
 				cardSlots.get(7).setEnabled(false);
@@ -210,7 +240,8 @@ public class Wildcard extends JPanel {
 				else if(cardSlots.get(6).isEnabled()) {
 					if(hand.get(discardedIndex1).getType()==3) {
 						hand.remove(discardedIndex1);
-						frame.drawCards(2, hand, deck);
+						if(deck.size() > 1) frame.drawCards(2, hand, deck);
+						else if(deck.size() == 1) frame.drawCards(1, hand, deck);
 						frame.getContentPane().add(new PlayCard(frame), "Play Card");
 						frame.showPlayCard();
 						removeThis(frame);

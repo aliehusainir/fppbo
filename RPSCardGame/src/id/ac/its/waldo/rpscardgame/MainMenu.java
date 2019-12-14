@@ -48,8 +48,8 @@ public class MainMenu extends JPanel {
 		JButton btnRules = new JButton("Rules");
 		btnRules.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				contentPane.add(new Rules(this), "Rules");
-//				frame.showRules();
+				frame.getContentPane().add(new Rules(frame), "Rules");
+				frame.showRules();
 			}
 		});
 		btnRules.setBounds(558, 551, 250, 67);

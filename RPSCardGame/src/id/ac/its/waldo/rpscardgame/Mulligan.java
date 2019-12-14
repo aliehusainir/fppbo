@@ -38,8 +38,24 @@ public class Mulligan extends JPanel {
 			cardSlots.add(new JButton());
 		}
 		
+		ImageIcon rockIcon = new ImageIcon("src/resources/rock.png");
+		ImageIcon paperIcon = new ImageIcon("src/resources/paper.png");
+		ImageIcon scissorsIcon = new ImageIcon("src/resources/scissors.png");
+		for(int k=0;k<5;k++) {
+			if(hand.get(k).getType()==0) {
+				cardSlots.get(k).setIcon(rockIcon);
+			}
+			else if(hand.get(k).getType()==1) {
+				cardSlots.get(k).setIcon(paperIcon);
+			}
+			else if(hand.get(k).getType()==2) {
+				cardSlots.get(k).setIcon(scissorsIcon);
+			}
+		}
+		
 		cardSlots.get(0).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				cardSlots.get(5).setIcon(cardSlots.get(0).getIcon());
 				cardSlots.get(5).setEnabled(true);
 				cardSlots.get(0).setEnabled(false);
 			}
@@ -49,6 +65,7 @@ public class Mulligan extends JPanel {
 		
 		cardSlots.get(1).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				cardSlots.get(6).setIcon(cardSlots.get(1).getIcon());
 				cardSlots.get(6).setEnabled(true);
 				cardSlots.get(1).setEnabled(false);
 			}
@@ -58,6 +75,7 @@ public class Mulligan extends JPanel {
 		
 		cardSlots.get(2).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				cardSlots.get(7).setIcon(cardSlots.get(2).getIcon());
 				cardSlots.get(7).setEnabled(true);
 				cardSlots.get(2).setEnabled(false);
 			}
@@ -67,6 +85,7 @@ public class Mulligan extends JPanel {
 		
 		cardSlots.get(3).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				cardSlots.get(8).setIcon(cardSlots.get(3).getIcon());
 				cardSlots.get(8).setEnabled(true);
 				cardSlots.get(3).setEnabled(false);
 			}
@@ -76,6 +95,7 @@ public class Mulligan extends JPanel {
 		
 		cardSlots.get(4).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				cardSlots.get(9).setIcon(cardSlots.get(4).getIcon());
 				cardSlots.get(9).setEnabled(true);
 				cardSlots.get(4).setEnabled(false);
 			}
@@ -85,6 +105,7 @@ public class Mulligan extends JPanel {
 		
 		cardSlots.get(5).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				cardSlots.get(5).setIcon(null);
 				cardSlots.get(0).setEnabled(true);
 				cardSlots.get(5).setEnabled(false);
 			}
@@ -95,6 +116,7 @@ public class Mulligan extends JPanel {
 		
 		cardSlots.get(6).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				cardSlots.get(6).setIcon(null);
 				cardSlots.get(1).setEnabled(true);
 				cardSlots.get(6).setEnabled(false);
 			}
@@ -105,6 +127,7 @@ public class Mulligan extends JPanel {
 		
 		cardSlots.get(7).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				cardSlots.get(7).setIcon(null);
 				cardSlots.get(2).setEnabled(true);
 				cardSlots.get(7).setEnabled(false);
 			}
@@ -115,6 +138,7 @@ public class Mulligan extends JPanel {
 		
 		cardSlots.get(8).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				cardSlots.get(8).setIcon(null);
 				cardSlots.get(3).setEnabled(true);
 				cardSlots.get(8).setEnabled(false);
 			}
@@ -125,6 +149,7 @@ public class Mulligan extends JPanel {
 		
 		cardSlots.get(9).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				cardSlots.get(9).setIcon(null);
 				cardSlots.get(4).setEnabled(true);
 				cardSlots.get(9).setEnabled(false);
 			}
@@ -132,12 +157,6 @@ public class Mulligan extends JPanel {
 		cardSlots.get(9).setEnabled(false);
 		cardSlots.get(9).setBounds(924, 60, 180, 240);
 		add(cardSlots.get(9));
-		
-//		for(int k=0;k<5;k++) {
-//			if(hand.get(k).getType()==0);
-//			else if(hand.get(k).getType()==1);
-//			else if(hand.get(k).getType()==2);
-//		}
 		
 		JLabel lbl = new JLabel("Mulligan Phase");
 		lbl.setHorizontalAlignment(SwingConstants.CENTER);
@@ -153,8 +172,6 @@ public class Mulligan extends JPanel {
 						Collections.shuffle(deck);
 						hand.add(k, deck.pop());
 					}
-//					cardSlots.get(k+5).setEnabled(false);
-//					cardSlots.get(k).setEnabled(false);
 				}
 				frame.getContentPane().add(new Wildcard(frame), "Wildcard");
 				frame.showWildcard();
